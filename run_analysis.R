@@ -12,15 +12,15 @@ trainingXUrl <- "./data/train/X_train.txt"
 testXUrl <- "./data/test/X_test.txt"
 widths  <- rep(16,561)
 trainingX <- read.fwf(trainingXUrl, header=FALSE, widths = widths, buffersize=500)
-colnames(trainingX) = features$V2
+colnames(trainingX) = features[,2]
 # Delete those columns which are not representing 
 # means or standard deviations from the training data
-trainingXms <- trainingX[keepColums]
+trainingXms <- trainingX[combined]
 testX <- read.fwf(testXUrl, header=FALSE, widths = widths, buffersize=500)
-colnames(testX) = features$V2
+colnames(testX) = features[,2]
 # Delete those columns which are not representing 
 # means or standard deviations from the test data
-testXms <- testX[keepColums]
+testXms <- testX[combined]
 
 # Read the subject data
 subjectTrain <- read.csv("./data/train/subject_train.txt", header = FALSE)
